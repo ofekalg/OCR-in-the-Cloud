@@ -9,3 +9,22 @@ The application is composed of a local application and instances running on the 
 The OCR tool we used is Tesseract (installed only on the workers).
 
 <img width="566" alt="Application_Flow" src="https://user-images.githubusercontent.com/44983890/117695986-7e462080-b1c9-11eb-9437-6e71f366e214.png">
+
+  1. Local Application uploads the file with the list of images to S3
+  2. Local Application sends a message (queue) stating of the location of the images list on S3
+  3. Local Application does one of the two:
+      Starts the manager
+      Checks if a manager is active and if not, starts it
+  4. Manager downloads list of images
+  5. Manager creates an SQS message for each URL in the list of images
+  6. Manager bootstraps nodes to process messages
+  7. Worker gets an image message from an SQS queue
+  8. Worker downloads the image indicated in the message
+  9. Worker applies OCR on image.
+  10. Worker puts a message in an SQS queue indicating the original URL of the image and the text.
+  11. Manager reads all the Workers' messages from SQS and creates one summary file
+  12. Manager uploads summary file to S3
+  13. Manager posts an SQS message about summary file
+  14. Local Application reads SQS message
+  15. Local Application downloads summary file from S3
+  16. Local Application creates html output files
