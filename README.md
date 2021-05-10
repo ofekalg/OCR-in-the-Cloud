@@ -7,3 +7,5 @@ In this assignment we coded a real-world application to distributively apply OCR
 The application is composed of a local application and instances running on the Amazon cloud. The application will get as an input a text file containing a list of URLs of images. Then, instances will be launched in AWS (workers). Each worker will download image files, use some OCR library to identify text in those images (if any) and display the image with the text in a webpage.
 
 The OCR tool we used is Tesseract (installed only on the workers).
+
+https://s3.amazonaws.com/dsp132/dsp132.assignment.1.png![image](https://user-images.githubusercontent.com/44983890/117690457-8b601100-b1c3-11eb-8c95-84775a4b4bc3.png)
