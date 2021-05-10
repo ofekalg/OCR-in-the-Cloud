@@ -8,4 +8,4 @@ The application is composed of a local application and instances running on the 
 
 The OCR tool we used is Tesseract (installed only on the workers).
 
-![alt text](https://s3.amazonaws.com/dsp132/dsp132.assignment.1.png)
+![alt text](https://github.com/ofekalg/OCR-in-the-Cloud/Aplication_Flow.png)
